@@ -125,4 +125,89 @@
 
         .subtitle {
             font-size: 1.5rem;
+            font-style: italic;
+            color: #ffcccc;
+            margin-bottom: 40px;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #eeeeee;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid #d4af37;
+        }
+
+        footer {
+            background: transparent;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader-wrapper">
+        <div class="loader-circle"></div>
+        <div class="loader-text">TATYANA KURTUKOVA</div>
+    </div>
+
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="gallery.html">Галерея</a>
+        <a href="news.html">Новости</a>
+        <a href="videos.html">Видео</a>
+    </nav>
+
+    <div class="main-content">
+        
+        <img src="https://i.postimg.cc/MHJ2vSR4/New-Project-830-5E91960.png" class="profile-img" alt="Татьяна Куртукова">
+        
+        <h1>Татьяна Куртукова</h1>
+        <p class="subtitle">Добро пожаловать на фан-сайт</p>
+        
+        <div class="about-text">
+            <p>
+                ТАТЬЯНА КУРТУКОВА — невероятно талантливая исполнительница русской народной музыки. 
+                Её искренний голос и любовь к культуре передают всю красоту и глубину русской души.
+            </p>
+            <p style="margin-top: 15px; color: #d4af37;">
+                Этот сайт посвящен её творчеству. Для просмотра фото, видео и новостей используйте верхнее меню.
+            </p>
+        </div>
+
+    </div>
+
+    <footer>
+        <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 20px;">
+            <a href="https://www.instagram.com/ts_makeeva_fan?igsh=MWRzZ3FzZWpjNGV6ZA==" target="_blank" style="color: #E1306C; font-size: 35px; transition: transform 0.3s;">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://youtube.com/@ts_makeeva_fan?si=IsnU9Mxi4lNI-BUe" target="_blank" style="color: #FF0000; font-size: 35px; transition: transform 0.3s;">
+                <i class="fab fa-youtube"></i>
+            </a> 
+        </div>
+        
+        <div style="margin-top: 15px; border-top: 1px dashed rgba(212, 175, 55, 0.3); padding-top: 10px; text-align: center;">
+            <p style="color: #ccc; font-size: 12px; margin-bottom: 5px; font-family: sans-serif;">Просмотры сайта</p>
+            <img src="https://counter9.optistats.ovh/private/freecounterstat.php?c=l8u4m1u3u9b9q3u7z7y1r1n1b1j1k1m1" border="0" title="visitor counter" alt="visitor counter">
+        </div>
             
+        <p style="color: #d4af37; font-family: sans-serif; font-size: 14px; margin-top: 20px;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
+    </footer>
+
+    <script>
+        // کاتێک هەموو شتێک لۆد بوو، شاشە ڕەشەکە لادەبات
+        window.addEventListener("load", function() {
+            const loader = document.getElementById("loader-wrapper");
+            setTimeout(() => {
+                loader.classList.add("loader-hidden");
+            }, 800); 
+        });
+    </script>
+
+</body>
+</html>
