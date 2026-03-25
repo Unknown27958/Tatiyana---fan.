@@ -93,7 +93,9 @@
 
     <div class="gallery-container">
         <h1 style="color: #d4af37; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Галерея</h1>
-        <p style="margin-bottom: 40px; color: #ccc;">Коллекция красивых образов Татьяны Куртуковой</p>
+        <p style="margin-bottom: 40px; color: #ccc;">Коллекция красивых образов Татьяны Куртуковой</p> 
+        <p id="photo-count" style="color: #d4af37; font-weight: bold; margin-bottom: 20px;">Всего фото: ...</p>
+        
 
         <div class="gallery-grid">
             
@@ -197,12 +199,14 @@
 
         <p style="color: #d4af37; font-size: 13px; margin-top: 20px;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
     </footer>
-<script>
-    window.onload = function() {
-        // لێرە کڵاسی وێنەکانت هەرچییەک بێت (بۆ نموونە gallery-item) دایبنێ
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // لێرە وشەی .gallery-item بەکاربهێنە یان هەر کڵاسێک کە بۆ وێنەکانت داناوە
         const totalPhotos = document.querySelectorAll('.gallery-item').length;
         document.getElementById('photo-count').innerText = "Всего фото: " + totalPhotos;
-    };
+    });
+</script>
+
 </script>
     
 </body>
