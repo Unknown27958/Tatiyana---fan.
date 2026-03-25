@@ -7,7 +7,6 @@
     <title>Видео — Клипы и концерты Татьяны Куртуковой</title> 
     <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/QdJ1DjCc/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg">
     
-    
     <meta name="description" content="Смотрите последние video-клипы и записи живых выступлений Татьяны Куртуковой онлайн.">
     <meta name="keywords" content="видео, клипы, выступления, живой звук, Татьяна Куртукова видео">
     
@@ -48,7 +47,17 @@
         h1 {
             font-size: 3rem;
             color: #d4af37;
+            margin-bottom: 10px;
+        }
+        #video-count {
+            color: #d4af37;
+            font-weight: bold;
             margin-bottom: 30px;
+            font-size: 1.2rem;
+            background: rgba(212, 175, 55, 0.1);
+            display: inline-block;
+            padding: 5px 20px;
+            border-radius: 20px;
         }
         .filter-container {
             margin-bottom: 40px;
@@ -118,9 +127,7 @@
 
     <div class="main-content">
         <h1>Видео</h1> 
-        <p id="video-count" style="color: #d4af37; font-weight: bold; margin-bottom: 20px;">Всего видео: ...</p>
-        
-
+        <p id="video-count">Всего видео: ...</p>
 
         <div class="filter-container">
             <button class="filter-btn active" id="btn-all" onclick="filterVideos('all')">Все</button>
@@ -210,62 +217,41 @@
     </footer>
 
     <script>
-        function filterVideos(category) {
-            document.getElementById('btn-all').classList.remove('active');
-            document.getElementById('btn-songs').classList.remove('active');
-            document.getElementById('btn-live').classList.remove('active');
+        // فانکشنی ژماردنی ڤیدیۆکان
+        function updateVideoCount() {
+            const allCards = document.querySelectorAll('.video-card');
+            const visibleCards = document.querySelectorAll('.video-card:not(.hidden)');
+            const countElement = document.getElementById('video-count');
             
-    // ئەم بەشە ژمارەکە دەژمێرێت کاتێک لاپەڕەکە دەبێتەوە
-    document.addEventListener("DOMContentLoaded", function() {
-        updateCount();
-    });
-
-    function updateCount() {
-        const total = document.querySelectorAll('.video-card').length;
-        document.getElementById('video-count').innerText = "Всего видео: " + total;
-    }
-
-    function filterVideos(category) {
-        // گۆڕینی دوگمە چالاکەکە
-        const btns = document.querySelectorAll('.filter-btn');
-        btns.forEach(btn => btn.classList.remove('active'));
-        event.currentTarget.classList.add('active');
-
-        // فلتەرکردنی ڤیدیۆکان
-        const cards = document.querySelectorAll('.video-card');
-        cards.forEach(card => {
-            if (category === 'all' || card.classList.contains(category)) {
-                card.style.display = 'flex';
+            if (allCards.length === visibleCards.length) {
+                countElement.innerText = "Всего видео: " + allCards.length;
             } else {
-                card.style.display = 'none';
+                countElement.innerText = "Найдено: " + visibleCards.length;
             }
-        });
+        }
 
-        // نوێکردنەوەی ژمارەکە بەپێی فلتەرەکە (ئارەزوومەندانە)
-        const visible = document.querySelectorAll('.video-card[style*="display: flex"]').length;
-        // ئەگەر ویستت ژمارەکە بگۆڕێت کاتێک فلتەر دەکەیت، ئەم دێڕەی خوارەوە چالاک بکە:
-        // document.getElementById('video-count').innerText = "Показано: " + visible;
-    }
-</script>
-    
-
-// ئەمە بانگ بکە کاتێک لاپەڕەکە دەبێتەوە
-window.onload = updateCount;
-            
-
+        // فانکشنی فلتەرکردن
+        function filterVideos(category) {
+            // گۆڕینی دوگمەی چالاک
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById('btn-' + category).classList.add('active');
 
+            // شاردنەوە و پیشاندان
             const cards = document.querySelectorAll('.video-card');
             cards.forEach(card => {
-                if (category === 'all') {
-                    card.classList.remove('hidden');
-                } else if (card.classList.contains(category)) {
+                if (category === 'all' || card.classList.contains(category)) {
                     card.classList.remove('hidden');
                 } else {
                     card.classList.add('hidden');
                 }
             });
+
+            // نوێکردنەوەی ژمارەکە
+            updateVideoCount();
         }
+
+        // ژماردنی سەرەتایی کاتی کردنەوەی لاپەڕە
+        document.addEventListener("DOMContentLoaded", updateVideoCount);
     </script>
 </body>
 </html>
