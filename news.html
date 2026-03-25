@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Новости — Татьяна Куртукова | Концерты и события 2026</title> 
-   <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/QdJ1DjCc/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg">
-    
+    <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/QdJ1DjCc/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg">
     
     <meta name="description" content="Последние новости о творчестве Татьяны Куртуковой. Узнайте первыми о концертах в Кремле и новых хитах.">
     <meta name="keywords" content="новости, концерты 2026, Песни Победы, Татьяна Куртукова новости">
@@ -14,6 +13,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
+        /* 1. Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png");
             background-size: cover;
@@ -23,6 +27,13 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
+            /* 2. Custom Cursor */
+            cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), auto !important;
+        }
+
+        /* Курсор для ссылок и кнопок */
+        a, button, .news-card {
+            cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), pointer !important;
         }
         
         nav {
@@ -116,6 +127,30 @@
             white-space: pre-line;
         }
 
+        /* 3. Back to Top Button Style */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(26, 5, 0, 0.8);
+            color: #d4af37;
+            border: 2px solid #d4af37;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+            z-index: 1500;
+            transition: 0.3s;
+        }
+
+        .back-to-top:hover {
+            background: #d4af37;
+            color: #1a0500;
+            transform: scale(1.1);
+        }
+
         .news-footer {
             margin-top: auto;
             font-style: italic;
@@ -160,34 +195,44 @@
 
 В концерте «Песни Победы» примут участие известные исполнители российской эстрады: Пелагея, Татьяна Куртукова, Шаман, Александр Маршал, Александр Буйнов, Хабиб, Виктория Дайнеко, Нилетто, Зара, Антон Токарев, Асия, Акмаль, Лок-Дог, Джанго, группа «Катюша», Миша Марвин и другие.
 
-Для зрителей прозвучат всеми любимые, легендарные композиции, ставшие неотъемлемой частью исторической памяти народа.Концерт призван сохранить память о подвиге советского народа, благодарности ветеранам и осознания великой цены мира.
-
-Организатор мероприятия — продюсерский центр «Интеграция» при поддержке Президентского фонда культурных инициатив.
-
 На концерте будет осуществляться телевизионная съемка.
 Начало в 19:00
-
-12+
                 </p>
                 <div class="news-footer">#ТатьянаКуртукова #ПесниПобеды #Кремль #Концерт</div>
             </div>
         </div>
-
     </div>
+
+    <button id="backToTop" class="back-to-top" title="Наверх">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
     <footer>
         <div style="margin-bottom: 15px;">
             <a href="https://www.instagram.com/ts_makeeva_fan?igsh=MWRzZ3FzZWpjNGV6ZA==" target="_blank" style="color: #E1306C; font-size: 30px; margin-right: 20px;"><i class="fab fa-instagram"></i></a>
             <a href="https://youtube.com/@ts_makeeva_fan?si=IsnU9Mxi4lNI-BUe" target="_blank" style="color: #FF0000; font-size: 30px;"><i class="fab fa-youtube"></i></a>
         </div>
-
         <div style="margin-top: 15px; border-top: 1px dashed rgba(212, 175, 55, 0.3); padding-top: 10px; text-align: center;">
             <p style="color: #ccc; font-size: 12px; margin-bottom: 5px;">Просмотры сайта</p>
             <img src="https://counter9.optistats.ovh/private/freecounterstat.php?c=l8u4m1u3u9b9q3u7z7y1r1n1b1j1k1m1" border="0" title="visitor counter" alt="visitor counter">
         </div>
-
         <p style="color: #d4af37; font-size: 13px; margin-top: 20px;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
     </footer>
+
+    <script>
+        // Логика кнопки "Наверх"
+        const backToTopBtn = document.getElementById("backToTop");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        backToTopBtn.onclick = function() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        };
+    </script>
     
 </body>
 </html>
