@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Галерея — Фотографии Татьяны Куртуковой</title>
+    <title>Галерея — Фотографии Татьяны Куртуковой</title> 
+    <p id="photo-count" style="color: #d4af37; font-weight: bold; margin-bottom: 20px;">Загрузка...</p>
+    
     <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/QdJ1DjCc/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg">
     
     
@@ -195,6 +197,13 @@
 
         <p style="color: #d4af37; font-size: 13px; margin-top: 20px;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
     </footer>
-
+<script>
+    window.onload = function() {
+        // لێرە کڵاسی وێنەکانت هەرچییەک بێت (بۆ نموونە gallery-item) دایبنێ
+        const totalPhotos = document.querySelectorAll('.gallery-item').length;
+        document.getElementById('photo-count').innerText = "Всего фото: " + totalPhotos;
+    };
+</script>
+    
 </body>
 </html>
