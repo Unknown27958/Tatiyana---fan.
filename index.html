@@ -6,7 +6,7 @@
     <meta name="google-site-verification" content="eh6CbhtjFX36PtcVnQkHxMmhhQpQUdR93iUdStEUfY0" />
     
     <title>Татьяна Куртукова — Официальный фан-сайт</title> 
-    <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/QdJ1DjCc/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg">
+    <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png">
     
     <meta name="description" content="Добро пожаловать на фан-сайт Татьяны Куртуковой. Здесь вы найдете последние новости, фото, видео и информацию о выступлениях артистки.">
     <meta name="keywords" content="Татьяна Куртукова, официальный сайт, фан-клуб, Матушка, русская музыка, фолк">
@@ -63,18 +63,11 @@
             opacity: 0;
             pointer-events: none;
         }
-        /* --- کۆتایی لۆدینگ --- */
 
-        /* --- ئیفێکتە زیندووەکان (Animations) --- */
+        /* --- ئیفێکتە زیندووەکان --- */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes float {
@@ -92,7 +85,6 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            /* Custom Cursor */
             cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), auto !important;
         }
         
@@ -119,16 +111,14 @@
             transition: color 0.3s;
         }
 
-        nav a:hover {
-            color: #ff4d4d;
-        }
+        nav a:hover { color: #ff4d4d; }
 
         .main-content {
             padding: 80px 20px;
             text-align: center;
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
-            animation: fadeInUp 1s ease-out; /* ئیفێکتی دەرکەوتنی تدریجی */
+            animation: fadeInUp 1s ease-out;
         }
 
         .profile-img {
@@ -139,7 +129,7 @@
             object-fit: cover;
             margin-bottom: 30px;
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-            transition: all 0.4s ease; /* بۆ جووڵەی ماوس */
+            transition: all 0.4s ease;
         }
 
         .profile-img:hover {
@@ -152,7 +142,7 @@
             color: #d4af37;
             margin-bottom: 10px;
             text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-            animation: float 3s ease-in-out infinite; /* ئیفێکتی لەرزین یان سەرکەوتن */
+            animation: float 3s ease-in-out infinite;
         }
 
         .subtitle {
@@ -171,20 +161,42 @@
             border-radius: 15px;
             border-left: 4px solid #d4af37;
             transition: all 0.4s ease;
+            margin-bottom: 60px;
         }
 
-        .about-text:hover {
+        /* --- ستایلی بەشی ژیاننامە لە لاپەڕەی سەرەکیدا --- */
+        .bio-section {
+            padding: 50px 30px;
             background: rgba(0, 0, 0, 0.8);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+            border: 1px solid #d4af37;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            text-align: left;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        footer {
-            background: transparent;
-            padding: 40px 20px;
+        .bio-image-small {
+            flex: 1;
+            min-width: 250px;
             text-align: center;
-            margin-top: 50px;
         }
+
+        .bio-image-small img {
+            width: 100%;
+            max-width: 280px;
+            border-radius: 15px;
+            border: 2px solid #d4af37;
+        }
+
+        .bio-info { flex: 2; min-width: 300px; }
+        .bio-info h2 { color: #d4af37; margin-top: 0; font-size: 2rem; }
+        .bio-info p { line-height: 1.8; color: #ddd; font-size: 1.1rem; }
+
+        footer { padding: 40px 20px; text-align: center; margin-top: 50px; }
     </style>
 </head>
 <body>
@@ -196,6 +208,7 @@
 
     <nav>
         <a href="index.html">Главная</a>
+        <a href="biography.html">Биография</a>
         <a href="gallery.html">Галерея</a>
         <a href="news.html">Новости</a>
         <a href="videos.html">Видео</a>
@@ -213,9 +226,23 @@
                 ТАТЬЯНА КУРТУКОВА — невероятно талантливая исполнительница русской народной музыки. 
                 Её искренний голос и любовь к культуре передают всю красоту и глубину русской души.
             </p>
-            <p style="margin-top: 15px; color: #d4af37;">
-                Этот сайт посвящен её творчеству. Для просмотра фото, видео и новостей используйте верхнее меню.
-            </p>
+        </div>
+
+        <div class="bio-section">
+            <div class="bio-image-small">
+                <img src="https://i.postimg.cc/QdJ1DjCc/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg" alt="Татьяна Куртукова Био">
+            </div>
+            <div class="bio-info">
+                <h2>Биография</h2>
+                <p>
+                    <span style="color: #d4af37; font-weight: bold;">Татьяна Куртукова</span> — яркая звезда современной фолк-сцены. 
+                    Она прославилась благодаря своему уникальному стилю, объединяющему народные традиции и современное звучание.
+                </p>
+                <p>
+                    Её хит «Матушка» покорил чарты и сердца миллионов слушателей, сделав Татьяну одной из самых востребованных артисток России.
+                </p>
+                <a href="biography.html" style="color: #ffcccc; text-decoration: none; font-weight: bold; border-bottom: 1px solid #ffcccc; padding-bottom: 2px;">Узнать больше...</a>
+            </div>
         </div>
 
     </div>
@@ -239,7 +266,6 @@
     </footer>
 
     <script>
-        // لۆجیکی لادانی لۆدینگ
         window.addEventListener("load", function() {
             const loader = document.getElementById("loader-wrapper");
             setTimeout(() => {
