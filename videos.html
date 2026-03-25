@@ -77,7 +77,7 @@
             flex-direction: column;
         }
         .video-card.hidden {
-            display: none;
+            display: none !important;
         }
         .video-container {
             position: relative;
@@ -96,6 +96,8 @@
         }
         h3 { color: #d4af37; margin: 15px 0; font-size: 1.1rem; }
         footer { padding: 40px; text-align: center; }
+        .social-icons a { color: #d4af37; font-size: 2.2rem; margin: 0 15px; text-decoration: none; transition: 0.3s; }
+        .social-icons a:hover { transform: scale(1.1); }
     </style>
 </head>
 <body>
@@ -111,9 +113,9 @@
         <h1>Видео</h1>
 
         <div class="filter-container">
-            <button class="filter-btn active" onclick="filterVideos('all', event)">Все</button>
-            <button class="filter-btn" onclick="filterVideos('songs', event)">Песни</button>
-            <button class="filter-btn" onclick="filterVideos('live', event)">Концерты</button>
+            <button class="filter-btn active" id="btn-all" onclick="filterVideos('all')">Все</button>
+            <button class="filter-btn" id="btn-songs" onclick="filterVideos('songs')">Песни</button>
+            <button class="filter-btn" id="btn-live" onclick="filterVideos('live')">Концерты</button>
         </div>
 
         <div class="video-grid">
@@ -186,6 +188,39 @@
     </div>
 
     <footer>
-        <div style="margin-top: 15px;">
-            <img src="
-                
+        <div class="social-icons" style="margin-bottom: 20px;">
+            <a href="https://www.instagram.com/ts_makeeva_fan?igsh=MWRzZ3FzZWpjNGV6ZA==" target="_blank" style="color: #E1306C;"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/@ts_makeeva_fan?si=IsnU9Mxi4lNI-BUe" target="_blank" style="color: #FF0000;"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div style="margin-top: 15px; border-top: 1px dashed rgba(212, 175, 55, 0.3); padding-top: 15px; display: inline-block;">
+            <p style="color: #ccc; font-size: 12px; margin-bottom: 8px;">Просмотры сайта</p>
+            <img src="https://counter9.optistats.ovh/private/freecounterstat.php?c=l8u4m1u3u9b9q3u7z7y1r1n1b1j1k1m1" border="0" title="visitor counter" alt="visitor counter">
+        </div>
+        <p style="color: #d4af37; margin-top: 20px;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
+    </footer>
+
+    <script>
+        function filterVideos(category) {
+            // سڕینەوەی ڕەنگی ئەکتیڤ لە هەموو دوگمەکان
+            document.getElementById('btn-all').classList.remove('active');
+            document.getElementById('btn-songs').classList.remove('active');
+            document.getElementById('btn-live').classList.remove('active');
+
+            // دانانی ڕەنگی ئەکتیڤ بۆ ئەو دوگمەیەی کلیکی لێ کراوە
+            document.getElementById('btn-' + category).classList.add('active');
+
+            // شاردنەوە و پیشاندانی ڤیدیۆکان
+            const cards = document.querySelectorAll('.video-card');
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.classList.remove('hidden');
+                } else if (card.classList.contains(category)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
