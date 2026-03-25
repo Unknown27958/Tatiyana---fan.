@@ -12,6 +12,11 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png");
             background-size: cover;
@@ -21,7 +26,15 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
+            /* Custom Cursor */
+            cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), auto !important;
         }
+
+        /* گۆڕینی ماوس بۆ لینک و دوگمەکان */
+        a, button, .filter-btn, .video-card {
+            cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), pointer !important;
+        }
+
         nav {
             background: rgba(26, 5, 0, 0.95);
             padding: 15px;
@@ -129,6 +142,31 @@
             border: none;
         }
         h3 { color: #d4af37; margin: 15px 0; font-size: 1.1rem; }
+
+        /* Back to Top Button Style */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(26, 5, 0, 0.8);
+            color: #d4af37;
+            border: 2px solid #d4af37;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+            z-index: 1500;
+            transition: 0.3s;
+        }
+
+        .back-to-top:hover {
+            background: #d4af37;
+            color: #1a0500;
+            transform: scale(1.1);
+        }
+
         footer { padding: 40px; text-align: center; }
         .social-icons a { color: #d4af37; font-size: 2.2rem; margin: 0 15px; text-decoration: none; transition: 0.3s; }
         .social-icons a:hover { transform: scale(1.1); }
@@ -232,6 +270,10 @@
         </div>
     </div>
 
+    <button id="backToTop" class="back-to-top" title="Наверх">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <footer>
         <div class="social-icons" style="margin-bottom: 20px;">
             <a href="https://www.instagram.com/ts_makeeva_fan?igsh=MWRzZ3FzZWpjNGV6ZA==" target="_blank" style="color: #E1306C;"><i class="fab fa-instagram"></i></a>
@@ -245,6 +287,19 @@
     </footer>
 
     <script>
+        // Back to Top Logic
+        const backToTopBtn = document.getElementById("backToTop");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        backToTopBtn.onclick = function() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        };
+
         let currentCategory = 'all';
 
         function updateVideoCount() {
