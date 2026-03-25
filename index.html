@@ -8,194 +8,79 @@
     <title>Татьяна Куртукова — Официальный фан-сайт</title> 
     <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png">
     
-    <meta name="description" content="Добро пожаловать на фан-сайт Татьяны Куртуковой. Здесь вы найдете последние новости, фото, видео и информацию о выступлениях артистки.">
-    <meta name="keywords" content="Татьяна Куртукова, официальный сайт, фан-клуб, Матушка, русская музыка, фолк">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- لۆجیکی لۆدینگ --- */
+        /* --- Loader Logic --- */
         #loader-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #1a0500;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #1a0500; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 9999;
             transition: opacity 0.6s ease;
         }
-
         .loader-circle {
-            width: 60px;
-            height: 60px;
-            border: 5px solid rgba(212, 175, 55, 0.1);
-            border-top: 5px solid #d4af37;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+            width: 60px; height: 60px; border: 5px solid rgba(212, 175, 55, 0.1);
+            border-top: 5px solid #d4af37; border-radius: 50%; animation: spin 1s linear infinite;
         }
-
         .loader-text {
-            margin-top: 20px;
-            color: #d4af37;
-            font-family: 'Segoe UI', sans-serif;
-            letter-spacing: 3px;
-            font-size: 14px;
-            font-weight: bold;
-            animation: pulse 1.5s ease-in-out infinite;
+            margin-top: 20px; color: #d4af37; font-family: 'Segoe UI', sans-serif;
+            letter-spacing: 3px; font-size: 14px; font-weight: bold; animation: pulse 1.5s ease-in-out infinite;
         }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+        .loader-hidden { opacity: 0; pointer-events: none; }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 1; }
-        }
-
-        .loader-hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        /* --- ئیفێکتە زیندووەکان --- */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0px); }
-        }
+        /* --- Animations --- */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-12px); } 100% { transform: translateY(0px); } }
 
         body {
             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png");
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
+            background-size: cover; background-attachment: fixed; background-position: center;
+            color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0;
             cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), auto !important;
+            scroll-behavior: smooth;
         }
         
-        a, button {
-            cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), pointer !important;
-        }
+        a, button { cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), pointer !important; }
 
         nav {
-            background: rgba(26, 5, 0, 0.95);
-            padding: 15px;
-            text-align: center;
-            border-bottom: 2px solid #d4af37;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            background: rgba(26, 5, 0, 0.95); padding: 15px; text-align: center;
+            border-bottom: 2px solid #d4af37; position: sticky; top: 0; z-index: 1000;
         }
-
-        nav a {
-            color: #d4af37;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: color 0.3s;
-        }
-
+        nav a { color: #d4af37; margin: 0 15px; text-decoration: none; font-weight: bold; transition: 0.3s; }
         nav a:hover { color: #ff4d4d; }
 
-        .main-content {
-            padding: 80px 20px;
-            text-align: center;
-            max-width: 1000px;
-            margin: 0 auto;
-            animation: fadeInUp 1s ease-out;
-        }
+        .main-content { padding: 80px 20px; text-align: center; max-width: 1000px; margin: 0 auto; animation: fadeInUp 1s ease-out; }
 
         .profile-img {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            border: 4px solid #d4af37;
-            object-fit: cover;
-            margin-bottom: 30px;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            width: 250px; height: 250px; border-radius: 50%; border: 4px solid #d4af37;
+            object-fit: cover; margin-bottom: 30px; box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
             transition: all 0.4s ease;
         }
+        .profile-img:hover { transform: scale(1.05) rotate(2deg); box-shadow: 0 0 35px rgba(212, 175, 55, 0.8); }
 
-        .profile-img:hover {
-            transform: scale(1.05) rotate(2deg);
-            box-shadow: 0 0 35px rgba(212, 175, 55, 0.8);
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            color: #d4af37;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            font-style: italic;
-            color: #ffcccc;
-            margin-bottom: 40px;
-        }
+        h1 { font-size: 3.5rem; color: #d4af37; margin-bottom: 10px; animation: float 3s ease-in-out infinite; }
+        .subtitle { font-size: 1.5rem; font-style: italic; color: #ffcccc; margin-bottom: 40px; }
 
         .about-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #eeeeee;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 30px;
-            border-radius: 15px;
-            border-left: 4px solid #d4af37;
-            transition: all 0.4s ease;
-            margin-bottom: 60px;
+            font-size: 1.2rem; line-height: 1.8; color: #eeeeee; background: rgba(0, 0, 0, 0.6);
+            padding: 30px; border-radius: 15px; border-left: 4px solid #d4af37; margin-bottom: 60px;
         }
 
-        /* --- ستایلی بەشی ژیاننامە لە لاپەڕەی سەرەکیدا --- */
         .bio-section {
-            padding: 50px 30px;
-            background: rgba(0, 0, 0, 0.8);
-            border: 1px solid #d4af37;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            text-align: left;
-            margin-top: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            padding: 50px 30px; background: rgba(0, 0, 0, 0.8); border: 1px solid #d4af37;
+            border-radius: 20px; display: flex; align-items: center; gap: 40px; flex-wrap: wrap;
+            text-align: left; margin-top: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-
-        .bio-image-small {
-            flex: 1;
-            min-width: 250px;
-            text-align: center;
-        }
-
-        .bio-image-small img {
-            width: 100%;
-            max-width: 280px;
-            border-radius: 15px;
+        .bio-image-square { flex: 1; min-width: 250px; text-align: center; }
+        .bio-image-square img {
+            width: 100%; max-width: 280px; border-radius: 10px; /* وێنەی چوارگۆشە بۆ بەشی ژیاننامە */
             border: 2px solid #d4af37;
         }
-
         .bio-info { flex: 2; min-width: 300px; }
-        .bio-info h2 { color: #d4af37; margin-top: 0; font-size: 2rem; }
-        .bio-info p { line-height: 1.8; color: #ddd; font-size: 1.1rem; }
-
+        .bio-info h2 { color: #d4af37; font-size: 2rem; margin-top: 0; }
+        
         footer { padding: 40px 20px; text-align: center; margin-top: 50px; }
     </style>
 </head>
@@ -208,40 +93,30 @@
 
     <nav>
         <a href="index.html">Главная</a>
-        <a href="biography.html">Биография</a>
-        <a href="gallery.html">Галерея</a>
+        <a href="#bio-anchor">Биография</a> <a href="gallery.html">Галерея</a>
         <a href="news.html">Новости</a>
         <a href="videos.html">Видео</a>
     </nav>
 
     <div class="main-content">
         
-        <img src="https://i.postimg.cc/MHJ2vSR4/New-Project-830-5E91960.png" class="profile-img" alt="Татьяна Куртукова">
+        <img src="https://i.postimg.cc/L5yBY6Tc/New-Project-833-E8598F3.png" class="profile-img" alt="Татьяна Куртукова">
         
         <h1>Татьяна Куртукова</h1>
         <p class="subtitle">Добро пожаловать на фан-сайт</p>
         
         <div class="about-text">
-            <p>
-                ТАТЬЯНА КУРТУКОВА — невероятно талантливая исполнительница русской народной музыки. 
-                Её искренний голос и любовь к культуре передают всю красоту и глубину русской души.
-            </p>
+            <p>ТАТЬЯНА КУРТУКОВА — невероятно талантливая исполнительница русской народной музыки. Её искренний голос и любовь к культуре передают всю красоту и глубину русской души.</p>
         </div>
 
-        <div class="bio-section">
-            <div class="bio-image-small">
-                <img src="https://i.postimg.cc/QdJ1DjCc/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg" alt="Татьяна Куртукова Био">
+        <div id="bio-anchor" class="bio-section">
+            <div class="bio-image-square">
+                <img src="https://i.postimg.cc/MHJ2vSR4/New-Project-830-5E91960.png" alt="Татьяна Куртукова Био">
             </div>
             <div class="bio-info">
                 <h2>Биография</h2>
-                <p>
-                    <span style="color: #d4af37; font-weight: bold;">Татьяна Куртукова</span> — яркая звезда современной фолк-сцены. 
-                    Она прославилась благодаря своему уникальному стилю, объединяющему народные традиции и современное звучание.
-                </p>
-                <p>
-                    Её хит «Матушка» покорил чарты и сердца миллионов слушателей, сделав Татьяну одной из самых востребованных артисток России.
-                </p>
-                <a href="biography.html" style="color: #ffcccc; text-decoration: none; font-weight: bold; border-bottom: 1px solid #ffcccc; padding-bottom: 2px;">Узнать больше...</a>
+                <p><span style="color: #d4af37; font-weight: bold;">Татьяна Куртукова</span> — яркая звезда современной фолк-сцены. Она прославилась благодаря своему уникальному стилю, объединяющему народные традиции и современное звучание.</p>
+                <p>Её хит «Матушка» покорил чарты и сердца миллионов слушателей, сделав Татьяну одной из самых востребованных артисток России.</p>
             </div>
         </div>
 
@@ -249,30 +124,24 @@
 
     <footer>
         <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 20px;">
-            <a href="https://www.instagram.com/ts_makeeva_fan?igsh=MWRzZ3FzZWpjNGV6ZA==" target="_blank" style="color: #E1306C; font-size: 35px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://youtube.com/@ts_makeeva_fan?si=IsnU9Mxi4lNI-BUe" target="_blank" style="color: #FF0000; font-size: 35px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
-                <i class="fab fa-youtube"></i>
-            </a> 
+            <a href="https://www.instagram.com/ts_makeeva_fan?igsh=MWRzZ3FzZWpjNGV6ZA==" target="_blank" style="color: #E1306C; font-size: 35px;"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/@ts_makeeva_fan?si=IsnU9Mxi4lNI-BUe" target="_blank" style="color: #FF0000; font-size: 35px;"><i class="fab fa-youtube"></i></a> 
         </div>
         
-        <div style="margin-top: 15px; border-top: 1px dashed rgba(212, 175, 55, 0.3); padding-top: 10px; text-align: center;">
-            <p style="color: #ccc; font-size: 12px; margin-bottom: 5px; font-family: sans-serif;">Просмотры сайта</p>
-            <img src="https://counter9.optistats.ovh/private/freecounterstat.php?c=l8u4m1u3u9b9q3u7z7y1r1n1b1j1k1m1" border="0" title="visitor counter" alt="visitor counter">
+        <div style="margin-top: 15px; border-top: 1px dashed rgba(212, 175, 55, 0.3); padding-top: 10px;">
+            <p style="color: #ccc; font-size: 12px; margin-bottom: 5px;">Просмотры сайта</p>
+            <img src="https://counter9.optistats.ovh/private/freecounterstat.php?c=l8u4m1u3u9b9q3u7z7y1r1n1b1j1k1m1" border="0">
         </div>
             
-        <p style="color: #d4af37; font-family: sans-serif; font-size: 14px; margin-top: 20px;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
+        <p style="color: #d4af37; font-size: 14px; margin-top: 20px;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
     </footer>
 
     <script>
         window.addEventListener("load", function() {
             const loader = document.getElementById("loader-wrapper");
-            setTimeout(() => {
-                loader.classList.add("loader-hidden");
-            }, 800); 
+            setTimeout(() => { loader.classList.add("loader-hidden"); }, 800); 
         });
     </script>
-
 </body>
 </html>
+
