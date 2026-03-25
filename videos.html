@@ -12,7 +12,7 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* --- ستایلی لۆدینگ --- */
+        /* --- لۆجیکی لۆدینگ --- */
         #loader-wrapper {
             position: fixed;
             top: 0;
@@ -62,6 +62,24 @@
             pointer-events: none;
         }
 
+        /* --- ئیفێکتە زیندووەکان (Animations) --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatTitle {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
         /* Smooth Scroll */
         html {
             scroll-behavior: smooth;
@@ -80,7 +98,6 @@
             cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), auto !important;
         }
 
-        /* گۆڕینی ماوس بۆ لینک و دوگمەکان */
         a, button, .filter-btn, .video-card {
             cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), pointer !important;
         }
@@ -100,17 +117,23 @@
             text-decoration: none;
             font-weight: bold;
             font-size: 1rem;
+            transition: color 0.3s;
         }
+        nav a:hover { color: #ff4d4d; }
+
         .main-content {
             padding: 60px 20px;
             text-align: center;
             max-width: 1200px;
             margin: 0 auto;
+            animation: fadeInUp 1s ease-out;
         }
         h1 {
             font-size: 3rem;
             color: #d4af37;
             margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+            animation: floatTitle 3s ease-in-out infinite;
         }
         #video-count {
             color: #d4af37;
@@ -128,13 +151,18 @@
         .search-box {
             width: 100%;
             max-width: 400px;
-            padding: 12px 20px;
-            border-radius: 25px;
+            padding: 12px 25px;
+            border-radius: 30px;
             border: 2px solid #d4af37;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.6);
             color: white;
             outline: none;
             font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .search-box:focus {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            background: rgba(0, 0, 0, 0.8);
         }
         .search-box::placeholder {
             color: rgba(212, 175, 55, 0.6);
@@ -151,27 +179,35 @@
             border: 2px solid #d4af37;
             color: #d4af37;
             padding: 10px 30px;
-            cursor: pointer;
             border-radius: 30px;
             font-weight: bold;
-            transition: 0.3s;
+            transition: all 0.3s;
         }
         .filter-btn.active, .filter-btn:hover {
             background: #d4af37;
             color: #1a0500;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
         }
         .video-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
+            gap: 30px;
         }
         .video-card {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             border: 2px solid #d4af37;
             border-radius: 15px;
             padding: 15px;
             display: flex;
             flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
+            border-color: #ff4d4d;
         }
         .video-card.hidden {
             display: none !important;
@@ -181,7 +217,8 @@
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            border-radius: 8px;
+            border-radius: 10px;
+            background: #000;
         }
         .video-container iframe {
             position: absolute;
@@ -191,7 +228,13 @@
             height: 100%;
             border: none;
         }
-        h3 { color: #d4af37; margin: 15px 0; font-size: 1.1rem; }
+        h3 { 
+            color: #d4af37; 
+            margin: 20px 0 15px 0; 
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        .video-card:hover h3 { color: #fff; }
 
         .back-to-top {
             position: fixed;
@@ -217,8 +260,15 @@
         }
 
         footer { padding: 40px; text-align: center; }
-        .social-icons a { color: #d4af37; font-size: 2.2rem; margin: 0 15px; text-decoration: none; transition: 0.3s; }
-        .social-icons a:hover { transform: scale(1.1); }
+        .social-icons a { 
+            color: #d4af37; 
+            font-size: 2.2rem; 
+            margin: 0 15px; 
+            text-decoration: none; 
+            transition: all 0.3s; 
+            display: inline-block;
+        }
+        .social-icons a:hover { transform: scale(1.2); }
     </style>
 </head>
 <body>
@@ -327,19 +377,19 @@
     </button>
 
     <footer>
-        <div class="social-icons" style="margin-bottom: 20px;">
+        <div class="social-icons" style="margin-bottom: 25px;">
             <a href="https://www.instagram.com/ts_makeeva_fan?igsh=MWRzZ3FzZWpjNGV6ZA==" target="_blank" style="color: #E1306C;"><i class="fab fa-instagram"></i></a>
             <a href="https://youtube.com/@ts_makeeva_fan?si=IsnU9Mxi4lNI-BUe" target="_blank" style="color: #FF0000;"><i class="fab fa-youtube"></i></a>
         </div>
         <div style="margin-top: 15px; border-top: 1px dashed rgba(212, 175, 55, 0.3); padding-top: 15px; display: inline-block;">
-            <p style="color: #ccc; font-size: 12px; margin-bottom: 8px;">Просмотры сайта</p>
+            <p style="color: #ccc; font-size: 12px; margin-bottom: 8px; font-family: sans-serif;">Просмотры сайта</p>
             <img src="https://counter9.optistats.ovh/private/freecounterstat.php?c=l8u4m1u3u9b9q3u7z7y1r1n1b1j1k1m1" border="0" title="visitor counter" alt="visitor counter">
         </div>
-        <p style="color: #d4af37; margin-top: 20px;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
+        <p style="color: #d4af37; margin-top: 25px; font-family: sans-serif; font-size: 14px;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
     </footer>
 
     <script>
-        // لۆجیکی لادانی لۆدینگ
+        // لادانی لۆدینگ
         window.addEventListener("load", function() {
             const loader = document.getElementById("loader-wrapper");
             setTimeout(() => {
@@ -347,7 +397,7 @@
             }, 800); 
         });
 
-        // Back to Top Logic
+        // Back to Top
         const backToTopBtn = document.getElementById("backToTop");
         window.onscroll = function() {
             if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
@@ -363,15 +413,13 @@
         let currentCategory = 'all';
 
         function updateVideoCount() {
-            const allCards = document.querySelectorAll('.video-card');
             const visibleCards = document.querySelectorAll('.video-card:not(.hidden)');
             const countElement = document.getElementById('video-count');
-            
-            if (allCards.length === visibleCards.length) {
-                countElement.innerText = "Всего видео: " + allCards.length;
-            } else {
-                countElement.innerText = "Найдено: " + visibleCards.length;
-            }
+            countElement.innerText = searchTermActive() ? "Найдено: " + visibleCards.length : "Всего видео: " + visibleCards.length;
+        }
+
+        function searchTermActive() {
+            return document.getElementById('videoSearch').value.trim() !== "";
         }
 
         function filterVideos(category) {
