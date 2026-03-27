@@ -14,257 +14,103 @@
     <style>
         /* --- لۆجیکی لۆدینگ --- */
         #loader-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #1a0500;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #1a0500; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 9999;
             transition: opacity 0.6s ease;
         }
-
         .loader-circle {
-            width: 60px;
-            height: 60px;
-            border: 5px solid rgba(212, 175, 55, 0.1);
-            border-top: 5px solid #d4af37;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+            width: 60px; height: 60px; border: 5px solid rgba(212, 175, 55, 0.1);
+            border-top: 5px solid #d4af37; border-radius: 50%; animation: spin 1s linear infinite;
         }
-
         .loader-text {
-            margin-top: 20px;
-            color: #d4af37;
-            font-family: 'Segoe UI', sans-serif;
-            letter-spacing: 3px;
-            font-size: 14px;
-            font-weight: bold;
-            animation: pulse 1.5s ease-in-out infinite;
+            margin-top: 20px; color: #d4af37; font-family: 'Segoe UI', sans-serif;
+            letter-spacing: 3px; font-size: 14px; font-weight: bold; animation: pulse 1.5s ease-in-out infinite;
         }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+        .loader-hidden { opacity: 0; pointer-events: none; }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        /* --- Animations --- */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes floatTitle { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 1; }
-        }
-
-        .loader-hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        /* --- ئیفێکتە زیندووەکان (Animations) --- */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes floatTitle {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png");
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            color: white;
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            margin: 0;
-            padding: 0;
-            /* Custom Cursor */
+            background-size: cover; background-attachment: fixed; background-position: center;
+            color: white; font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding: 0;
             cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), auto !important;
         }
 
-        a, button, .image-card {
-            cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), pointer !important;
+        a, button, .image-card { cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), pointer !important; }
+
+        /* --- Side Menu Styling --- */
+        .menu-icon {
+            position: fixed; top: 20px; left: 20px;
+            font-size: 24px; color: #d4af37; cursor: pointer;
+            z-index: 1100; background: rgba(26, 5, 0, 0.8);
+            padding: 10px 15px; border-radius: 8px; border: 1px solid #d4af37;
         }
 
-        nav {
-            background: rgba(26, 5, 0, 0.95);
-            padding: 15px;
-            text-align: center;
-            border-bottom: 2px solid #d4af37;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+        .side-menu {
+            position: fixed; top: 0; left: -50%; width: 50%; height: 100%;
+            background: rgba(26, 5, 0, 0.98); border-right: 2px solid #d4af37;
+            z-index: 1200; transition: 0.5s; overflow-x: hidden;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
 
-        nav a {
-            color: #d4af37;
-            margin: 0 10px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
+        .side-menu.active { left: 0; }
 
-        nav a:hover {
-            color: #ff4d4d;
-        }
-
-        .gallery-container {
-            padding: 60px 20px;
-            text-align: center;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        h1 {
-            color: #d4af37;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-            margin-bottom: 10px;
-            font-size: 3rem;
-            animation: floatTitle 3s ease-in-out infinite;
-        }
-
-        #photo-count {
-            color: #d4af37;
-            font-weight: bold;
-            margin-bottom: 30px;
-            font-size: 1.2rem;
-            background: rgba(212, 175, 55, 0.1);
-            display: inline-block;
-            padding: 5px 20px;
-            border-radius: 20px;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .image-card {
-            border: 2px solid #d4af37;
-            border-radius: 12px;
-            overflow: hidden;
-            background: rgba(0, 0, 0, 0.5);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-
-        .image-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
-            border-color: #ff4d4d;
-        }
-
-        .image-card img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            display: block;
-            transition: filter 0.3s ease;
-        }
-
-        .image-card:hover img {
-            filter: brightness(1.1);
-        }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: rgba(26, 5, 0, 0.8);
-            color: #d4af37;
-            border: 2px solid #d4af37;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            font-size: 20px;
-            cursor: pointer;
-            display: none;
-            z-index: 1500;
+        .menu-links { width: 100%; text-align: center; }
+        .menu-links a {
+            display: block; padding: 15px; text-decoration: none;
+            font-size: 1.2rem; color: #d4af37; font-weight: bold;
             transition: 0.3s;
         }
 
-        .back-to-top:hover {
-            background: #d4af37;
-            color: #1a0500;
-            transform: scale(1.1);
+        .menu-links a:hover, .menu-links a.active { color: #ff4d4d; transform: scale(1.1); }
+
+        .close-btn-menu {
+            position: absolute; top: 20px; right: 25px;
+            font-size: 36px; color: #d4af37; cursor: pointer;
         }
 
-        /* Lightbox Styles */
-        .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            justify-content: center;
-            align-items: center;
-            user-select: none;
+        .menu-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); display: none; z-index: 1150;
+        }
+        .menu-overlay.active { display: block; }
+
+        @media screen and (max-width: 768px) {
+            .side-menu { width: 80%; left: -80%; }
         }
 
-        .lightbox-img {
-            max-width: 90%;
-            max-height: 85vh;
-            border: 3px solid #d4af37;
-            border-radius: 10px;
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
-        }
+        /* --- Gallery Styles --- */
+        .gallery-container { padding: 80px 20px; text-align: center; animation: fadeInUp 1s ease-out; }
+        h1 { color: #d4af37; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); margin-bottom: 10px; font-size: 3rem; animation: floatTitle 3s ease-in-out infinite; }
+        #photo-count { color: #d4af37; font-weight: bold; margin-bottom: 30px; font-size: 1.2rem; background: rgba(212, 175, 55, 0.1); display: inline-block; padding: 5px 20px; border-radius: 20px; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
+        .image-card { border: 2px solid #d4af37; border-radius: 12px; overflow: hidden; background: rgba(0, 0, 0, 0.5); transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .image-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4); border-color: #ff4d4d; }
+        .image-card img { width: 100%; height: 400px; object-fit: cover; display: block; transition: filter 0.3s ease; }
+        .image-card:hover img { filter: brightness(1.1); }
 
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 40px;
-            color: #d4af37;
-            font-size: 50px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+        .back-to-top { position: fixed; bottom: 30px; right: 30px; background: rgba(26, 5, 0, 0.8); color: #d4af37; border: 2px solid #d4af37; width: 45px; height: 45px; border-radius: 50%; font-size: 20px; cursor: pointer; display: none; z-index: 1500; transition: 0.3s; }
+        .back-to-top:hover { background: #d4af37; color: #1a0500; transform: scale(1.1); }
 
-        .close-btn:hover { color: #ff4d4d; }
-
-        .prev, .next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #d4af37;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            padding: 20px;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
+        /* Lightbox */
+        .lightbox { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.95); justify-content: center; align-items: center; user-select: none; }
+        .lightbox-img { max-width: 90%; max-height: 85vh; border: 3px solid #d4af37; border-radius: 10px; box-shadow: 0 0 40px rgba(212, 175, 55, 0.5); }
+        .close-btn-lightbox { position: absolute; top: 20px; right: 40px; color: #d4af37; font-size: 50px; cursor: pointer; transition: 0.3s; }
+        .close-btn-lightbox:hover { color: #ff4d4d; }
+        .prev, .next { position: absolute; top: 50%; transform: translateY(-50%); color: #d4af37; font-size: 40px; font-weight: bold; cursor: pointer; padding: 20px; text-decoration: none; transition: 0.3s; }
         .prev:hover, .next:hover { color: #fff; transform: translateY(-50%) scale(1.2); }
         .prev { left: 20px; }
         .next { right: 20px; }
 
-        footer {
-            padding: 40px;
-            text-align: center;
-        }
+        footer { padding: 40px; text-align: center; }
     </style> 
 </head>
 <body>
@@ -274,18 +120,27 @@
         <div class="loader-text">TATYANA KURTUKOVA</div>
     </div>
 
+    <div class="menu-icon" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
 
-    <nav>
-        <a href="index.html">Главная</a>
-        <a href="gallery.html">Галерея</a>
-        <a href="news.html">Новости</a>
-        <a href="videos.html">Видео</a> 
-        <a href="quiz.html">Квиз</a>
-        <a href="about.html" class="active">О нас</a>
-        <a href="ask.html" style="color: #FFD700; border: 1px solid #FFD700; padding: 5px 12px; border-radius: 20px; margin-left: 10px;">
-            <i class="fas fa-robot"></i> AI Bot
-        </a>
-    </nav>
+    <div id="sideMenu" class="side-menu">
+        <div class="close-btn-menu" onclick="toggleMenu()">&times;</div>
+        <div class="menu-links">
+            <a href="index.html">Главная</a>
+            <a href="gallery.html" class="active">Галерея</a>
+            <a href="news.html">Новости</a>
+            <a href="videos.html">Видео</a> 
+            <a href="quiz.html">Квиз</a>
+            <a href="about.html">О нас</a>
+            <hr style="border: 0.5px dashed #d4af37; width: 80%; margin: 20px auto;">
+            <a href="ask.html" style="color: #FFD700;">
+                <i class="fas fa-robot"></i> AI Bot
+            </a>
+        </div>
+    </div>
+
+    <div id="menuOverlay" class="menu-overlay" onclick="toggleMenu()"></div>
 
     <div class="gallery-container">
         <h1>Галерея</h1>
@@ -359,7 +214,7 @@
     </div>
 
     <div id="lightbox" class="lightbox">
-        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <span class="close-btn-lightbox" onclick="closeLightbox()">&times;</span>
         <img id="lightbox-img" class="lightbox-img" src="" alt="Zoomed Photo">
         <a class="prev" onclick="changeImage(-1)">&#10094;</a>
         <a class="next" onclick="changeImage(1)">&#10095;</a>
@@ -382,16 +237,19 @@
     </footer>
 
     <script> 
-        // لۆجیکی لادانی لۆدینگ
         window.addEventListener("load", function() {
             const loader = document.getElementById("loader-wrapper");
-            setTimeout(() => {
-                loader.classList.add("loader-hidden");
-            }, 800); 
+            setTimeout(() => { loader.classList.add("loader-hidden"); }, 800); 
         });
 
-        const backToTopBtn = document.getElementById("backToTop");
+        function toggleMenu() {
+            const menu = document.getElementById("sideMenu");
+            const overlay = document.getElementById("menuOverlay");
+            menu.classList.toggle("active");
+            overlay.classList.toggle("active");
+        }
 
+        const backToTopBtn = document.getElementById("backToTop");
         window.onscroll = function() {
             if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
                 backToTopBtn.style.display = "block";
@@ -400,24 +258,17 @@
             }
         };
 
-        backToTopBtn.onclick = function() {
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        };
+        backToTopBtn.onclick = function() { window.scrollTo({top: 0, behavior: 'smooth'}); };
         
         let currentImgIndex = 0;
         const images = [];
 
         document.addEventListener("DOMContentLoaded", function() {
             const imgElements = document.querySelectorAll('.image-card img');
-            imgElements.forEach((img) => {
-                images.push(img.src);
-            });
-
+            imgElements.forEach((img) => { images.push(img.src); });
             const totalPhotos = images.length;
             const countElement = document.getElementById('photo-count');
-            if (countElement) {
-                countElement.innerText = "Всего фото: " + totalPhotos;
-            }
+            if (countElement) { countElement.innerText = "Всего фото: " + totalPhotos; }
         });
 
         function openLightbox(index) {
@@ -439,11 +290,7 @@
             document.getElementById("lightbox-img").src = images[currentImgIndex];
         }
 
-        window.onclick = function(event) {
-            if (event.target == document.getElementById("lightbox")) {
-                closeLightbox();
-            }
-        }
+        window.onclick = function(event) { if (event.target == document.getElementById("lightbox")) { closeLightbox(); } }
 
         document.addEventListener('keydown', function(e) {
             if (document.getElementById("lightbox").style.display === "flex") {
