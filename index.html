@@ -327,26 +327,41 @@
             menu.classList.toggle("active");
             overlay.classList.toggle("active");
         }  
-        // --- ئەمە ئەو ئیفێکتەیە کە سایتەکە دەکاتە بۆمب بەبێ تێکدانی لۆدینگ ---
-document.addEventListener('mousemove', function(e) {
+       // --- ١. کۆدی لۆدینگەکە (بە جیا و سەلامەت) ---
+window.addEventListener("load", function() {
     var loader = document.getElementById("loader-wrapper");
-    
-    // مەرج: تەنها کاتێک کار بکە کە لۆدینگەکە دیار نەمابێت (display: none بێت)
-    if (loader && loader.style.display === "none") {
+    if (loader) {
+        setTimeout(function() {
+            loader.style.opacity = "0";
+            setTimeout(function() {
+                loader.style.display = "none";
+            }, 800);
+        }, 3000); 
+    }
+});
+
+// --- ٢. کۆدی ئیفێکتە "بۆمبەکە" (دوای ٤ چرکە دەستپێدەکات تا لۆدینگ تێکنەدات) ---
+setTimeout(function() {
+    document.addEventListener('mousemove', function(e) {
+        // دروستکردنی پڕیشکەکە بەبێ هیچ مەرجێکی ئاڵۆز
         let particle = document.createElement('div');
         particle.className = 'particle';
+        particle.style.position = 'fixed';
+        particle.style.pointerEvents = 'none';
+        particle.style.zIndex = '10000';
+        particle.style.background = 'radial-gradient(circle, #d4af37, #ff4d4d)';
+        particle.style.borderRadius = '50%';
+        particle.style.boxShadow = '0 0 10px #d4af37';
+        
         document.body.appendChild(particle);
 
-        // شوێنی ماوس
         particle.style.left = e.clientX + 'px';
         particle.style.top = e.clientY + 'px';
 
-        // قەبارەی پڕیشکەکان
         let size = Math.random() * 7 + 2;
         particle.style.width = size + 'px';
         particle.style.height = size + 'px';
 
-        // ئاڕاستەی تەقینەوەکە
         let destX = (Math.random() - 0.5) * 120;
         let destY = (Math.random() - 0.5) * 120;
 
@@ -357,8 +372,8 @@ document.addEventListener('mousemove', function(e) {
             duration: 800 + Math.random() * 800,
             easing: 'ease-out'
         }).onfinish = () => particle.remove();
-    }
-});
+    });
+}, 4000); // ئەم ٤ چرکەیە دڵنیایی دەدات کە لۆدینگەکە تەواو بووە ئینجا ئەمە کار دەکات
      
     </script>
 </body>
