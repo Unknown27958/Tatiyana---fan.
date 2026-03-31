@@ -326,7 +326,39 @@
             const overlay = document.getElementById("menuOverlay");
             menu.classList.toggle("active");
             overlay.classList.toggle("active");
-        } 
+        }  
+        // --- ئەمە ئەو ئیفێکتەیە کە سایتەکە دەکاتە بۆمب بەبێ تێکدانی لۆدینگ ---
+document.addEventListener('mousemove', function(e) {
+    var loader = document.getElementById("loader-wrapper");
+    
+    // مەرج: تەنها کاتێک کار بکە کە لۆدینگەکە دیار نەمابێت (display: none بێت)
+    if (loader && loader.style.display === "none") {
+        let particle = document.createElement('div');
+        particle.className = 'particle';
+        document.body.appendChild(particle);
+
+        // شوێنی ماوس
+        particle.style.left = e.clientX + 'px';
+        particle.style.top = e.clientY + 'px';
+
+        // قەبارەی پڕیشکەکان
+        let size = Math.random() * 7 + 2;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+
+        // ئاڕاستەی تەقینەوەکە
+        let destX = (Math.random() - 0.5) * 120;
+        let destY = (Math.random() - 0.5) * 120;
+
+        particle.animate([
+            { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+            { transform: translate(${destX}px, ${destY}px) scale(0), opacity: 0 }
+        ], {
+            duration: 800 + Math.random() * 800,
+            easing: 'ease-out'
+        }).onfinish = () => particle.remove();
+    }
+});
      
     </script>
 </body>
