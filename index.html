@@ -339,42 +339,6 @@ window.addEventListener("load", function() {
         }, 3000); 
     }
 });
-
-// --- ٢. کۆدی ئیفێکتە "بۆمبەکە" (دوای ٤ چرکە دەستپێدەکات تا لۆدینگ تێکنەدات) ---
-setTimeout(function() {
-    document.addEventListener('mousemove', function(e) {
-        // دروستکردنی پڕیشکەکە بەبێ هیچ مەرجێکی ئاڵۆز
-        let particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.position = 'fixed';
-        particle.style.pointerEvents = 'none';
-        particle.style.zIndex = '10000';
-        particle.style.background = 'radial-gradient(circle, #d4af37, #ff4d4d)';
-        particle.style.borderRadius = '50%';
-        particle.style.boxShadow = '0 0 10px #d4af37';
-        
-        document.body.appendChild(particle);
-
-        particle.style.left = e.clientX + 'px';
-        particle.style.top = e.clientY + 'px';
-
-        let size = Math.random() * 7 + 2;
-        particle.style.width = size + 'px';
-        particle.style.height = size + 'px';
-
-        let destX = (Math.random() - 0.5) * 120;
-        let destY = (Math.random() - 0.5) * 120;
-
-        particle.animate([
-            { transform: 'translate(0, 0) scale(1)', opacity: 1 },
-            { transform: translate(${destX}px, ${destY}px) scale(0), opacity: 0 }
-        ], {
-            duration: 800 + Math.random() * 800,
-            easing: 'ease-out'
-        }).onfinish = () => particle.remove();
-    });
-}, 4000); // ئەم ٤ چرکەیە دڵنیایی دەدات کە لۆدینگەکە تەواو بووە ئینجا ئەمە کار دەکات
-     
     </script>
 </body>
 </html>
