@@ -125,7 +125,6 @@
 
         footer { padding: 40px; text-align: center; border-top: 1px solid #d4af37; background: rgba(0,0,0,0.8); margin-top: 50px;}
         
-        /* --- بەشی زیادکراو بۆ لۆگۆی دەقی فوول سکرین --- */
         .video-overlay-text {
             position: absolute;
             top: 25px;
@@ -187,6 +186,24 @@
             .video-overlay-text { font-size: 16px; top: 15px; right: 15px; }
         }
     </style>
+    
+    <script>
+        function hideLoader() {
+            var loader = document.getElementById("loader-wrapper");
+            if (loader) {
+                loader.style.opacity = "0";
+                setTimeout(function() {
+                    loader.style.display = "none";
+                }, 800);
+            }
+        }
+        
+        // ئەگەر سایتەکە زۆری خایاند، دوای ٣ چرکە بە زۆر لایبەرە
+        setTimeout(hideLoader, 3000);
+        
+        // کاتێک پەڕەکە بە تەواوی لۆد بوو، لایبەرە
+        window.addEventListener('load', hideLoader);
+    </script>
 </head>
 <body>
 
@@ -261,14 +278,13 @@
             <div class="video-card podcasts"><h3>Авто радио</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/0IqO5GW6i2A" loading="lazy"></iframe></div></div> 
             <div class="video-card podcasts live"><h3>Таврида.АRT</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/mKQRS9aIteM" loading="lazy"></iframe></div></div> 
             <div class="video-card podcasts"><h3>Таврида.ART</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/JGH_HZS7KQ4" loading="lazy"></iframe></div></div> 
-            <div class="video-card podcasts"><h3>Радио Шансон</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/ZPjoa3t0oiE" loading="lazy"></iframe></div></div> 
+            <div class="video-card podcasts"><h3>Радио Шانсон</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/ZPjoa3t0oiE" loading="lazy"></iframe></div></div> 
             <div class="video-card podcasts live"><h3>Авто радио</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/l689gxWT9s4" loading="lazy"></iframe></div></div>
             <div class="video-card podcasts"><h3>Дорожное радио</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/lDn3s8xxn7Y" loading="lazy"></iframe></div></div> 
             <div class="video-card podcasts"><h3>Новогоднее такси</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/e-qktmtMA-I" loading="lazy"></iframe></div></div> 
             <div class="video-card podcasts"><h3>Детское Радио</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/8t6Jq932lLw" loading="lazy"></iframe></div></div> 
             <div class="video-card live"><h3>Русская дорога</h3><div class="video-container"><iframe src="https://vkvideo.ru/video_ext.php?oid=-207836019&id=456245144&hd=2"></iframe></div></div>
             <div class="video-card live"><h3>посвященного 10 летию войск национальной гвардии</h3><div class="video-container"><iframe src="https://vkvideo.ru/video_ext.php?oid=-228878112&id=456241986&start=136"></iframe></div></div>
-        </div> 
         </div> 
     </div>
 
@@ -283,18 +299,7 @@
     </footer>
 
     <script>
-        // --- 1. لۆدینگەکە بە زۆرەملێ لادەبات دوای ٢.٥ چرکە ---
-        setTimeout(function() {
-            var loader = document.getElementById("loader-wrapper");
-            if (loader) {
-                loader.style.opacity = "0";
-                setTimeout(function() {
-                    loader.style.display = "none";
-                }, 800);
-            }
-        }, 2500);
-
-        // --- 2. مینیو و فلتەرەکان ---
+        // --- مینیو و فلتەرەکان ---
         function toggleMenu() {
             document.getElementById("sideMenu").classList.toggle("active");
             document.getElementById("menuOverlay").classList.toggle("active");
@@ -323,9 +328,4 @@
                 } else {
                     card.classList.add('hidden');
                 }
-            });
-            updateVideoCount();
-        }
-
-        function updateVideoCount() {
-            cons
+                      cons
